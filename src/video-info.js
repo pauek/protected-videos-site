@@ -25,11 +25,13 @@ const getVideoListInfo = async () => {
     const { filename, duration, format_name } = vid.format;
     const hours = Math.floor(duration / 3600);
     const minutes = Math.floor(duration % 3600 / 60);
+    const seconds = Math.floor(duration % 60);
     const HH = (hours < 10 ? "0" : "") + `${hours}`;
     const MM = (minutes < 10 ? "0" : "") + `${minutes}`;
+    const SS = (seconds < 10 ? "0" : "") + `${seconds}`;
     return { 
       filename: path.basename(filename),
-      duration: `${HH}:${MM}`,
+      duration: `${HH}:${MM}:${SS}`,
     };
   });
 };

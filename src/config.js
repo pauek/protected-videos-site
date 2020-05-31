@@ -19,4 +19,5 @@ module.exports = {
   PASSWORD: getEnvVar("PASSWORD"),
   LOG: getEnvVar("LOG"),
   MAX_AGE: 12 * HOUR,
+  VIDEO_DIR: getEnvVar("VIDEO_DIR"),
 };

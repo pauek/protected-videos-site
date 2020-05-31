@@ -1,3 +1,4 @@
+const { VIDEO_DIR } = require('./config');
 const util = require("util");
 const fs = require("fs");
 const path = require("path");
@@ -19,18 +20,15 @@ async function* walkDir(dir) {
 
 const getVideoListInfo = async () => {
   let videoListInfo = [];
-  for await (const file of walkDir("videos")) {
+  for await (const file of walkDir(VIDEO_DIR)) {
     const { format } = await videoInfo(file);
     videoListInfo.push(format);
   }
-  console.log(videoListInfo);
   videoListInfo.sort((a, b) => {
     if (a.filename < b.filename) return -1;
     if (a.filename > b.filename) return 1;
     return 0;
   });
-  console.log(videoListInfo);
-
   videoListInfo = videoListInfo.map((vid) => {
     const { filename, duration } = vid;
     const hours = Math.floor(duration / 3600);

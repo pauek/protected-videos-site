@@ -10,15 +10,13 @@ app.use(cookieParser()); // Parse cookies
 app.use(express.urlencoded({ extended: true })); // Read POST params
 
 // Login page is open (auth Middleware redirects here)
-app.use('/login', require('./login'));
+app.use(require('./login'));
 
 // Any routes after this middleware need authentication
 app.use(require('./auth'));
 
-// Video info
-app.use('/videos.json', require('./video-info'));
-
 // The password protected site is in the "public" directory
+app.use('/', require('./home'));
 app.use(express.static('public'));
 app.use('/videos', express.static('videos'));
 

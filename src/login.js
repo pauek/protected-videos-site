@@ -1,4 +1,4 @@
-const { PASSWORD, MAX_AGE } = require("./config");
+const { PASSWORD, ADMIN_PASSWORD, MAX_AGE } = require("./config");
 const express = require("express");
 const routes = express.Router();
 const tokendb = require("./tokendb");
@@ -41,21 +41,30 @@ const loginPage = (message = "") => `
 </html>
 `;
 
-routes.get("/", (req, res) => {
+routes.get("/login", (req, res) => {
   log("GET login");
   res.send(loginPage());
 });
 
-routes.post("/", (req, res) => {
+routes.post("/login", (req, res) => {
   const { password } = req.body;
   log("POST /login:", password);
-  if (password === PASSWORD) {
-    const token = tokendb.createToken(MAX_AGE);
+  if (password === ADMIN_PASSWORD) {
+    const token = tokendb.createToken({ maxAge: MAX_AGE, admin: true });
+    res.cookie("token", token, { maxAge: MAX_AGE });
+    res.redirect("/");
+  } else if (password === PASSWORD) {
+    const token = tokendb.createToken({ maxAge: MAX_AGE });
     res.cookie("token", token, { maxAge: MAX_AGE });
     res.redirect("/");
   } else {
     res.send(loginPage("Incorrect password"));
   }
 });
+
+routes.get("/logout", (req, res) => {
+  res.clearCookie('token');
+  res.redirect('/login');
+})
 
 module.exports = routes;

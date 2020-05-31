@@ -45,10 +45,6 @@ const getVideoListInfo = async () => {
   return videoListInfo;
 };
 
-const routes = express.Router();
-routes.get("/", async (req, res) => {
-  const videoListInfo = await getVideoListInfo();
-  res.json(videoListInfo);
-});
-
-module.exports = routes;
+module.exports = {
+  getVideoListInfo
+};

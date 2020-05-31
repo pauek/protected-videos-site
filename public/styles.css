@@ -1,6 +1,23 @@
 body {
-  margin: 1rem;
   font-family: sans-serif;
+  margin: 0;
+}
+header {
+  padding: .5rem .8rem;
+  display: flex;
+  border-bottom: 1px solid lightgray;
+}
+header.admin {
+  background-color: rgb(255, 115, 115);
+}
+header h4 {
+  margin: 0;
+}
+header .spacer {
+  flex: 1;
+}
+#content {
+  margin: 1rem;
   max-width: 60rem;
   margin: 1rem auto 1rem auto;
 }

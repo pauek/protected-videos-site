@@ -17,7 +17,9 @@ const HOUR = 60 * MINUTE;
 module.exports = {
   PORT: getEnvVar("PORT"),
   PASSWORD: getEnvVar("PASSWORD"),
+  ADMIN_PASSWORD: getEnvVar("ADMIN_PASSWORD"),
   LOG: getEnvVar("LOG"),
   MAX_AGE: 12 * HOUR,
   VIDEO_DIR: getEnvVar("VIDEO_DIR"),
+  TITLE: getEnvVar("TITLE"),
 };

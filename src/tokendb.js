@@ -8,7 +8,7 @@ const removeExpiredTokens = () => {
   const newTokenDB = new Map();
   tokenDB.forEach((expires, token) => {
     if (expires > now) {
-      newTokenDB.set(token, expires);
+      newTokenDB.set(token, { expires });
     } else {
       log(`Removing token ${token}`);
     }
@@ -16,33 +16,35 @@ const removeExpiredTokens = () => {
   tokenDB = newTokenDB;
 };
 
-const createToken = (maxAge) => {
+const createToken = ({ maxAge, admin = false }) => {
   removeExpiredTokens();
   const newToken = uuidv4();
   const now = new Date();
-  const expireDate = new Date(Number(now) + maxAge);
-  tokenDB.set(newToken, expireDate);
-  log("New token created: ", newToken, expireDate);
+  const expires = new Date(Number(now) + maxAge);
+  tokenDB.set(newToken, { expires, admin });
+  log("New token created: ", newToken, expires);
   return newToken;
 };
 
-const hasToken = (token) => {
-  if (tokenDB.has(token)) {
-    const now = new Date();
-    const expireDate = tokenDB.get(token);
-    if (expireDate > now) {
-      log(`Token ${token} is valid.`);
-      return true;
-    } else {
-      log(`Token ${token} expired.`);
-      tokenDB.delete(token);
-      return false;
-    }
-  } else {
+const getToken = (token) => {
+  if (!tokenDB.has(token)) {
     log(`Token ${token} not found.`);
-    return false;
+    return null;
   }
+  const info = tokenDB.get(token);
+  const now = new Date();
+  if (info.expires < now) {
+    log(`Token ${token} expired.`);
+    tokenDB.delete(token);
+    return null;
+  }
+  log(`Token ${token} is valid.`);
+  return info;
 };
+
+const hasToken = (token) => {
+  return getToken(token) !== null;
+}
 
 const deleteToken = (token) => {
   if (tokenDB.has(token)) {
@@ -54,8 +56,11 @@ const deleteToken = (token) => {
   return false;
 };
 
+
+
 module.exports = {
   createToken,
+  getToken,
   hasToken,
   deleteToken,
 };

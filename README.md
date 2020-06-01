@@ -33,8 +33,8 @@ Create an `.env` file in this directory with the following information:
 
 ```
 PORT=8080
-PASSWORD=yourpwd
-ADMIN_PASSWORD=youradminpwd
+PASSWORD=your_user_password
+ADMIN_PASSWORD=your_admin_password
 VIDEO_DIR=/your/video/dir
 TITLE=Your Page Title
 ```

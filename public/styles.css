@@ -3,18 +3,27 @@ body {
   margin: 0;
 }
 header {
-  padding: .5rem .8rem;
   display: flex;
   border-bottom: 1px solid lightgray;
+  align-items: center;
+  padding-right: .3rem;
 }
 header.admin {
   background-color: rgb(255, 115, 115);
 }
 header h4 {
+  padding: 0.5rem 0.8rem;
   margin: 0;
 }
 header .spacer {
   flex: 1;
+}
+header a {
+  text-decoration: none;
+  padding: 0.2rem 0.4rem;
+}
+header a:hover {
+  background-color: lightblue;
 }
 #content {
   margin: 1rem;
@@ -46,7 +55,7 @@ video {
   font-size: 0.9rem;
 }
 .info .duration {
-  font-size: .8rem;
+  font-size: 0.8rem;
   color: rgb(83, 83, 83);
 }
 .info .header {
@@ -54,8 +63,8 @@ video {
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
-  margin: .1rem 0 .2rem 0;
+  margin: 0.1rem 0 0.2rem 0;
 }
 .info time {
-  font-size: .8rem;
+  font-size: 0.8rem;
 }

@@ -1,8 +1,17 @@
-# Environment file
+# System dependencies
+
+This package requires ffmpeg. In a debian-like system you can install it as follows:
+
+```
+sudo apt install ffmpeg
+```
+
+# Environment 
 Create a .env file in this directory with the following information:
 ```
 PORT=8080
 PASSWORD=yourpwd
+ADMIN_PASSWORD=youradminpwd
 LOG=false      
 ```
 # Start, stop and running in dev mode:

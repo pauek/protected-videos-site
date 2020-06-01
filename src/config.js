@@ -15,11 +15,12 @@ const MINUTE = 60 * SECOND;
 const HOUR = 60 * MINUTE;
 
 module.exports = {
+  LOG: process.env.LOG || false, // This variable is not required
+  MAX_AGE: 12 * HOUR,
+  
   PORT: getEnvVar("PORT"),
   PASSWORD: getEnvVar("PASSWORD"),
   ADMIN_PASSWORD: getEnvVar("ADMIN_PASSWORD"),
-  LOG: getEnvVar("LOG"),
-  MAX_AGE: 12 * HOUR,
   VIDEO_DIR: getEnvVar("VIDEO_DIR"),
   TITLE: getEnvVar("TITLE"),
 };

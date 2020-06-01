@@ -1,8 +1,8 @@
-const { VIDEO_DIR } = require('./config');
+const { VIDEO_DIR } = require("./config");
 const util = require("util");
 const fs = require("fs");
 const path = require("path");
-const express = require('express');
+const express = require("express");
 const exec = util.promisify(require("child_process").exec);
 
 const videoInfo = async (filename) => {
@@ -22,7 +22,10 @@ const getVideoListInfo = async () => {
   let videoListInfo = [];
   for await (const file of walkDir(VIDEO_DIR)) {
     const { format } = await videoInfo(file);
-    videoListInfo.push(format);
+    // Avoid files with format_name === 'tty' (text files)
+    if (format && format.format_name !== 'tty') { 
+      videoListInfo.push(format);
+    }
   }
   videoListInfo.sort((a, b) => {
     if (a.filename < b.filename) return -1;
@@ -46,5 +49,5 @@ const getVideoListInfo = async () => {
 };
 
 module.exports = {
-  getVideoListInfo
+  getVideoListInfo,
 };

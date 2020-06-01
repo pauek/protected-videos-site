@@ -7,8 +7,14 @@ const exec = util.promisify(require("child_process").exec);
 
 const videoInfo = async (filename) => {
   const cmd = `ffprobe -v quiet -print_format json -show_format "${filename}"`;
-  const { stdout } = await exec(cmd);
-  return JSON.parse(stdout);
+  try {
+    const { stdout } = await exec(cmd);
+    console.log("Success", stdout);
+    return JSON.parse(stdout);
+  } catch (e) {
+    console.log("Error", e.toString());
+    return {};
+  }
 };
 
 async function* walkDir(dir) {
@@ -23,7 +29,7 @@ const getVideoListInfo = async () => {
   for await (const file of walkDir(VIDEO_DIR)) {
     const { format } = await videoInfo(file);
     // Avoid files with format_name === 'tty' (text files)
-    if (format && format.format_name !== 'tty') { 
+    if (format && format.format_name !== "tty") {
       videoListInfo.push(format);
     }
   }

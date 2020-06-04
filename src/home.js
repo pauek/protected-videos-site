@@ -33,6 +33,7 @@ const renderVideo = ({ filename, duration, thumbnail }, index) => {
   return `
     <a href="/video/${index}">
       <img class="thumbnail" src="/video/${index}/thumbnail" alt="Video thumbnail" />
+      <div class="icon"><div class="arrow"></div></div>
     </a>
     <div class="info">
       <div class="header">

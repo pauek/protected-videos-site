@@ -6,7 +6,7 @@ header {
   display: flex;
   border-bottom: 1px solid lightgray;
   align-items: center;
-  padding-right: .3rem;
+  padding-right: 0.3rem;
 }
 header.admin {
   background-color: rgb(255, 115, 115);
@@ -26,18 +26,12 @@ header a:hover {
   background-color: lightblue;
 }
 #content {
-  margin: 1rem;
   max-width: 120rem;
   margin: 1rem auto 1rem auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-
-}
-video {
-  width: 270px;
-  height: 150px;
 }
 .video {
   display: inline-flex;
@@ -49,11 +43,26 @@ video {
 .video .thumbnail {
   width: 320px;
   height: 240px;
-  margin-bottom: .4rem;
+  margin-bottom: 0.4rem;
   box-shadow: 3px 3px 6px rgb(165, 165, 165);
 }
 .video .info {
   padding: 0.2rem.3rem;
+}
+.video a {
+  position: relative;
+}
+.video .icon {
+  position: absolute;
+  top: calc(50% - 1rem);
+  left: calc(50% - 1rem);
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.746));
+}
+.video .arrow {
+  width: 2rem;
+  height: 2rem;
+  background-color: rgb(36, 36, 36);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
 }
 .video h2 {
   margin: 0;

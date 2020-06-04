@@ -12,6 +12,9 @@ const loginPage = (message = "") => `
     <title>Login</title>
     <style>
       body {
+        font-size: 1.2rem;
+        width: 100vw;
+        height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;

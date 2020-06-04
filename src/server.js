@@ -18,7 +18,7 @@ app.use(require('./auth'));
 // The password protected site is in the "public" directory
 app.use('/', require('./home'));
 app.use('/video', require('./video'));
-app.use(express.static('public'));
+app.use(express.static('public')); // static files
 
 http.createServer(app).listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);

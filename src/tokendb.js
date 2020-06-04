@@ -1,6 +1,9 @@
 const { v4: uuidv4 } = require("uuid");
 const { log } = require("./log");
 
+// The Token DB is completely in-memory, 
+// if you stop the server it will go away.
+
 let tokenDB = new Map();
 
 const removeExpiredTokens = () => {
@@ -55,8 +58,6 @@ const deleteToken = (token) => {
   log("Attempted to delete token ${token} (not found)");
   return false;
 };
-
-
 
 module.exports = {
   createToken,

@@ -27,7 +27,7 @@ header a:hover {
 }
 #content {
   margin: 1rem;
-  max-width: 90rem;
+  max-width: 120rem;
   margin: 1rem auto 1rem auto;
   display: flex;
   flex-direction: row;
@@ -59,6 +59,7 @@ video {
   margin: 0;
   font-family: sans-serif;
   font-size: 0.95rem;
+  width: 15rem;
 }
 .video p {
   margin: 0;

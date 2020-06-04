@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const router = Router();
-const { getVideoListInfo } = require('./video-list-info');
+const { videoInfo } = require('./video-info');
 const { TITLE } = require('./config');
 
 const htmlPage = (content, options) => {
@@ -26,14 +26,14 @@ const htmlPage = (content, options) => {
   `;
 };
 
-const renderVideo = ({ filename, duration }) => {
+const renderVideo = ({ filename, duration, thumbnail }, index) => {
   const [datename, extension] = filename.split(".");
   const [date, name] = datename.split(" - ");
   const revdate = date.split("-").reverse().join("/");
   return `
-    <video controls="true">
-      <source src="/videos/${filename}" />
-    </video>
+    <a href="/video/${index}">
+      <img class="thumbnail" src="/video/${index}/thumbnail" alt="Video thumbnail" />
+    </a>
     <div class="info">
       <div class="header">
         <h2>${name}</h2>
@@ -44,18 +44,16 @@ const renderVideo = ({ filename, duration }) => {
   `;
 };
 
-const userVideoList = async () => {
-  const info = await getVideoListInfo();
-  return info.map(vid => 
+const userVideoList = () => {
+  return videoInfo().map((vid, index) => 
     `<div class="video">
-      ${renderVideo(vid)}
+      ${renderVideo(vid, index)}
     </div>`
   ).join('\n');
 }
 
 const adminVideoList = async () => {
-  const info = await getVideoListInfo();
-  return info.map(vid => 
+  return videoInfo().map(vid => 
     `<div class="info">${vid.filename}</div>`
   ).join('\n');
 }

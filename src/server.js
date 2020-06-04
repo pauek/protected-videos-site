@@ -1,4 +1,4 @@
-const { PORT, VIDEO_DIR } = require('./config');
+const { PORT, VIDEO_DIR, THUMBNAIL_DIR } = require('./config');
 const http = require('http');
 const express = require('express');
 const cors = require('cors');
@@ -17,8 +17,8 @@ app.use(require('./auth'));
 
 // The password protected site is in the "public" directory
 app.use('/', require('./home'));
+app.use('/video', require('./video'));
 app.use(express.static('public'));
-app.use('/videos', express.static(VIDEO_DIR));
 
 http.createServer(app).listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);

@@ -40,7 +40,12 @@ video {
   margin-top: 1rem;
   margin-right: 1.2rem;
   margin-bottom: 1.2rem;
-  width: 270px;
+}
+.video .thumbnail {
+  width: 320px;
+  height: 240px;
+  margin-bottom: .4rem;
+  box-shadow: 3px 3px 6px rgb(165, 165, 165);
 }
 .video .info {
   padding: 0.2rem.3rem;

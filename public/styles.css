@@ -27,8 +27,13 @@ header a:hover {
 }
 #content {
   margin: 1rem;
-  max-width: 60rem;
+  max-width: 90rem;
   margin: 1rem auto 1rem auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+
 }
 video {
   width: 270px;

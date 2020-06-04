@@ -1,4 +1,4 @@
-const { PORT, VIDEO_DIR, THUMBNAIL_DIR } = require('./config');
+const { PORT } = require('./config');
 const http = require('http');
 const express = require('express');
 const cors = require('cors');

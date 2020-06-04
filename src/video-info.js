@@ -79,7 +79,9 @@ const produceThumbnails = async () => {
         info.thumbnail = `${basename}.png`;
         info.absolute_thumbnail = absolute_thumbnail;
       } catch (e) {
-        log(`Error: can't get thumbnail for ${absolute_filename}: ${e.toString()}`);
+        log(
+          `Error: can't get thumbnail for ${absolute_filename}: ${e.toString()}`
+        );
         info.thumbnail = null;
         info.absolute_thumbnail = null;
       }

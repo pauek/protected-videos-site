@@ -36,7 +36,7 @@ const loginPage = (message = "") => `
       <p>
         <label>
           Password <br>
-          <input type="password" name="password" />
+          <input type="password" name="password" autofocus />
         </label>
       </p>
     </form>

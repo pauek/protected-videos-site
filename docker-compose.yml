@@ -1,0 +1,15 @@
+version: '3'
+services:
+  video:
+    restart: always
+    ports:
+      - "9000:8080"
+    volumes:
+      - ./docker-volumes/videos:/videos
+    build:
+      context: ./build
+    environment:
+     - TITLE=changeme
+     - PASSWORD=changeme
+     - ADMIN_PASSWORD=admin-changeme
+

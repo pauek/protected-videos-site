@@ -1,4 +1,4 @@
-
+const { TITLE } = require("./config");
 const express = require('express');
 const { videoInfo } = require('./video-info');
 const router = express.Router();
@@ -9,10 +9,10 @@ const videoPage = (content) => {
     <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Posgrado Fullstack - Vídeos</title>
+      <title>${TITLE}</title>
       <link rel="stylesheet" href="styles.css" types="text/css" />
       <style>
-        body {          
+        body {
           margin: 0;
         }
         video {

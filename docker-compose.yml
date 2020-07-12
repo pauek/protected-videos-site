@@ -9,7 +9,7 @@ services:
     build:
       context: ./build
     environment:
-     - TITLE=Fullstack 2020
-     - PASSWORD=fullstack2020
-     - ADMIN_PASSWORD=full$t@ckPRJ
+     - TITLE=changeme
+     - PASSWORD=changeme
+     - ADMIN_PASSWORD=admin-changeme
 

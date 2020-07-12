@@ -1,0 +1,15 @@
+version: '3'
+services:
+  video:
+    restart: always
+    ports:
+      - "9000:8080"
+    volumes:
+      - ./docker-volumes/videos:/videos
+    build:
+      context: ./build
+    environment:
+     - TITLE=Fullstack 2020
+     - PASSWORD=fullstack2020
+     - ADMIN_PASSWORD=full$t@ckPRJ
+
